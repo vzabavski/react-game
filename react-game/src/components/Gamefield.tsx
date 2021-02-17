@@ -1,63 +1,76 @@
 import React from 'react'
+import { createArray, isAcceptableToSwap } from '../utills/game';
 import { Cell } from './Cell'
 
 export class Gamefield extends React.Component {
-    
+    size = 9;
     state = {
-        cells: Object.assign({0: 'p'}, ...this.createArray(4))
+        cells: Object.assign({0: String.fromCharCode(this.size + 96)}, ...createArray(this.size))
     }
-    
-    createArray(n: number) {
-        const arr = []
-        for (let i = 1; i < Math.pow(n, 2); i++) {
-            arr.push({[i]: String.fromCharCode(i + 96)});
+    componentDidMount() {
+        window.addEventListener('keypress', this.keyboardMoves);
+    }
+    componentWillUnmount() {
+        window.removeEventListener('keypress', this.keyboardMoves);
+    }
+    keyboardMoves = (event:any) => {
+        const keyCode = event.keyCode;
+        const { cells } = this.state
+        const emptyPosition = cells[0].charCodeAt(0)
+        switch(keyCode) {
+            case 119: 
+                const upCellPosition = String.fromCharCode(emptyPosition + Math.sqrt(this.size))
+                const upCellNumber = Object.values(cells).indexOf(upCellPosition)
+                this.swapPositions(upCellPosition, upCellNumber)
+                break;
+            case 115: 
+                const downCellPosition = String.fromCharCode(emptyPosition - Math.sqrt(this.size))
+                const downCellNumber = Object.values(cells).indexOf(downCellPosition)
+                this.swapPositions(downCellPosition, downCellNumber)
+                break;
+            case 97: 
+                const leftCellPosition = String.fromCharCode(emptyPosition + 1)
+                const leftCellNumber = Object.values(cells).indexOf(leftCellPosition)
+                this.swapPositions(leftCellPosition, leftCellNumber)
+                break;
+            case 100: 
+                const rightCellPosition = String.fromCharCode(emptyPosition - 1)
+                const rightCellNumber = Object.values(cells).indexOf(rightCellPosition)
+                this.swapPositions(rightCellPosition, rightCellNumber)
+                break;
         }
-        return arr
     }
     
+    swapPositions = (position: string, num: number) => {
+        if(isAcceptableToSwap(this.state.cells[num],this.state.cells[0], Object.keys(this.state.cells).length)) {
+            let buffer = this.state.cells[0];
+            this.setState({
+                cells: {
+                    ...this.state.cells,
+                    0: position,
+                    [num]: buffer
+                }
+            })
+        }
+    }
     render() {
-        
         const { cells } = this.state
 
-        const isAcceptableToSwap = (from: string, to:string,  size:number):Boolean => {
-            const left = to.charCodeAt(0) - 1;
-            const right = to.charCodeAt(0) + 1;                         // export 
-            const up = to.charCodeAt(0) - Math.sqrt(size);
-            const down = to.charCodeAt(0) + Math.sqrt(size);
-            const exapmle = from.charCodeAt(0);
-            if(exapmle === left || 
-                exapmle === right || 
-                exapmle === up ||
-                exapmle === down) {
-                return true
-            }
-            return false
-        }
-        const swapPositions = (position: string, num: number) => {
-            if(isAcceptableToSwap(cells[num],cells[0], Object.keys(cells).length)) {
-                let buffer = cells[0];
-                this.setState({
-                    cells: {
-                        ...cells,
-                        0: position,
-                        [num]: buffer
-                    }
-                })
-            }
-        }
+        
+         
         const creatCells = () => {
             const arr = []
             for (let cell in cells) {
                 if(+cell === 0) {
-                    arr.push(<Cell key={+cell} class={cells[cell] + ' empty'}  number={+cell}  swap={swapPositions}/>)
+                    arr.push(<Cell key={+cell} class={cells[cell] + ' empty'}  number={+cell}  swap={this.swapPositions}/>)
                 } else {
-                    arr.push(<Cell key={+cell} class={cells[cell]}  number={+cell}  swap={swapPositions}/>)
+                    arr.push(<Cell key={+cell} class={cells[cell]}  number={+cell}  swap={this.swapPositions}/>)
                 }
             }
             return arr
         }
         return(
-            <div className='gamefield-wrapper sixteen-cells' >
+            <div className='gamefield-wrapper nine-cells' >
             { creatCells() }
         </div>
         )

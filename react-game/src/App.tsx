@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
-import { Gamefield } from './components/Gamefield';
+import { Game } from './components/Game Page';
+
 
 
 function App() {
   return (
     <div className="App" >
-     <Gamefield/>
+      <Game />
     </div>
   );
 }

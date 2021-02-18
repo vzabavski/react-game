@@ -2,8 +2,9 @@ import React from 'react'
 import { createArray, isAcceptableToSwap } from '../utills/game';
 import { Cell } from './Cell'
 
-export class Gamefield extends React.Component {
+export class Gamefield extends React.Component<{addStep: ()=> void}> {
     size = 9;
+    
     state = {
         cells: Object.assign({0: String.fromCharCode(this.size + 96)}, ...createArray(this.size))
     }
@@ -42,7 +43,9 @@ export class Gamefield extends React.Component {
     }
     
     swapPositions = (position: string, num: number) => {
-        if(isAcceptableToSwap(this.state.cells[num],this.state.cells[0], Object.keys(this.state.cells).length)) {
+        const movedCellPosition = this.state.cells[num];
+        const emptyCellPosition = this.state.cells[0]
+        if(isAcceptableToSwap(movedCellPosition, emptyCellPosition, this.size)) {
             let buffer = this.state.cells[0];
             this.setState({
                 cells: {
@@ -50,16 +53,16 @@ export class Gamefield extends React.Component {
                     0: position,
                     [num]: buffer
                 }
-            })
+            });
+            this.props.addStep()
         }
     }
     render() {
         const { cells } = this.state
 
         
-         
         const creatCells = () => {
-            const arr = []
+            const arr = []                  // export
             for (let cell in cells) {
                 if(+cell === 0) {
                     arr.push(<Cell key={+cell} class={cells[cell] + ' empty'}  number={+cell}  swap={this.swapPositions}/>)
@@ -70,7 +73,7 @@ export class Gamefield extends React.Component {
             return arr
         }
         return(
-            <div className='gamefield-wrapper nine-cells' >
+            <div className='gamefield-wrapper asian nine-cells' >
             { creatCells() }
         </div>
         )

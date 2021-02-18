@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,16 +15,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.wrapper {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.time {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  margin: 0.5%;
+  font-size: 1.2rem;
+}
+
+.counter {
+  width: 40%;
+  margin: 20px 0 50px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
 
 .gamefield-wrapper {
-  width: 200px;
-  height: 200px;
+  width: 60vh;
+  height: 60vh;
   display: grid;
   grid-gap: 5px;
-  background:rgba(105, 31, 15, 0.8);
-  border: 10px solid rgba(87, 38, 12, 1);;
-  border-radius: 15px;
 }
 .nine-cells {
   grid-template-areas: 
@@ -36,16 +59,11 @@ code {
   "m n o p";
 }
 .cell {
-  background:rgba(240, 233, 225, 1);
   border-radius: 15%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 2px ;
-  font-size: 1.2rem;
-  font-weight: 700;
-  transition: ease 0.5s;
-  box-shadow: rgba(0, 0, 0, 0.5) 5px 3px;
   cursor: pointer;
 }
 .number {
@@ -55,11 +73,77 @@ code {
   justify-content: center;
   align-items: center;
   border-radius: 40%;
-  border: 1px solid rgba(237, 223, 209, 1);
-  background: rgba(237, 223, 209, 0.8);;
 }
 .empty {
   display: none;
+}
+
+/* Syntwave vibe*/
+.synt {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.wrapper.synt {
+  background-image: url(./assets/344034.png);
+  background-size: auto 100%;
+}
+
+.time.synt {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #b9b9b9;
+}
+.cell.synt {
+  font-size: 1.2rem;
+  font-weight: 700;
+  box-shadow: rgba(0, 0, 0, 0.5) 5px 3px;
+  background:rgb(250, 249, 253);
+}
+
+.number.synt {
+  color: rgb(198, 0, 248);
+  border: 1px solid rgb(85, 7, 173);
+  background: rgb(231,196,233);
+  background: radial-gradient(circle, rgba(231,196,233,1) 16%, rgba(255,255,255,1) 100%);
+}
+/* Asian vibe*/
+.asian {
+  font-family: 'Xanh Mono', monospace;
+}
+
+.gamefield-wrapper.asian {
+  background:rgba(105, 31, 15, 0.8);
+  border: 10px solid rgba(87, 38, 12, 1);;
+  border-radius: 15px;
+}
+
+.time.asian {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #2c0c0c;
+}
+
+.counter.asian {
+  color: white;
+}
+
+.wrapper.asian {
+  /*background: rgb(125, 168, 89);*/
+  background: url(./assets/VZqFssW.jpg);
+  background-size: 100% 100%;
+
+}
+
+.cell.asian {
+  font-size: 1.2rem;
+  font-weight: 700;
+  box-shadow: rgba(0, 0, 0, 0.5) 5px 3px;
+  background:rgb(224, 218, 210);
+}
+
+.number.asian {
+  border: 1px solid rgba(237, 223, 209, 1);
+  background: rgba(223, 209, 196, 0.8);
 }
 
 .a {
@@ -109,4 +193,14 @@ code {
 }
 .p {
   grid-area: p;
+}
+
+@media(max-width: 500px) {
+  .gamefield-wrapper {
+    width: 70vw;
+    height: 70vw;
+  }
+  .time {
+    font-size: 1.2rem;
+  }
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { options } from '../../utills/options'
 import './index.css'
 
@@ -24,31 +24,48 @@ export const Win: React.FC = (props): React.ReactElement => {
  }
 
 export const Options: React.FC = (props): React.ReactElement => {
-    const setStyle = (style: string) => {
-        options.style = style
+    const [style, setStyle] = useState(options.style)
+    const [size, setSize] = useState(options.size)
+    const [vis, setVis] = useState(options.visibility)
+    
+    const handleStyleChange = (e: any) => {
+        setStyle(e.target.value);
+        options.style = e.target.value
     }
-    const setSize = (size: number) => {
-        options.size = size
+    const handleSizeChange = (e: any) => {
+        setSize(e.target.value);
+        options.size = e.target.value
         localStorage.clear()
     }
+    const handleVisChange = (e: any) => {
+        setVis(e.target.value);
+        options.visibility = e.target.value
+    }
+
     return (
         <div>
             <div className='options_block'>
                 <h3>Style: </h3>
-                <ul className='options-list'>
-                    <li className='options-list-item' onClick={() => setStyle('default')}>Default</li>
-                    <li className='options-list-item' onClick={() => setStyle('asian')}>Asian vibe</li>
-                    <li className='options-list-item' onClick={() => setStyle('synt')}>Synt-wave</li>
-                </ul>
+                <select value={style} onChange={handleStyleChange}>
+                    <option value="default">Default</option>
+                    <option value="asian">Asian vibe</option>
+                    <option value="synt">Synt-wave</option>
+                </select>
             </div>
             <div className='options_block'>
                 <h3>Size: </h3>
-                <ul className='options-list'>
-                    <li className='options-list-item' onClick={() => setSize(9)}>3X3</li>
-                    <li className='options-list-item' onClick={() => setSize(16)}>4X4</li>
-                </ul>
+                <select value={size} onChange={handleSizeChange}>
+                    <option value={9}>3X3</option>
+                    <option value={16}>4X4</option>
+                </select>
             </div>
-            <h3>Hide stats</h3>
+            <div className='options_block'>
+                <h3>Hide stats: </h3>
+                <select value={vis} onChange={handleVisChange}>
+                    <option value=''>Show</option>
+                    <option value='invisible'>Hide</option>
+                </select>
+            </div>
         </div>
     )
 }

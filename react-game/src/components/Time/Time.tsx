@@ -1,37 +1,29 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { options } from '../../utills/options';
 import './index.css'
 
 export const Time: React.FC = (props): React.ReactElement => {
-    const [minutes, setMinutes] = React.useState(0);
-    const [seconds, setSeconds] = React.useState(0);
-    const [hours, setHours] = React.useState(0);
-    const countRef = useRef(null)
-
-    const addZero = (n: string) => {
-        return (parseInt(n, 10) < 10 ? '0' : '') + n
+    const [timer, setTimer] = useState(6908);
+    const countRef = useRef(null);
+    const formatTime = () => {
+        const getSec = `0${timer % 60}`
+        const min = Math.floor(timer / 60);
+        const getMin = `0${min % 60}`.slice(-2)
+        const hour = Math.floor(min / 60);
+        const getHour = `0${hour % 60}`.slice(-2)
+        return `${getHour}:${getMin}:${getSec}`
     }
-    const tick = () => {
-        //const currentMinute = minutes;
-        //const currentSecond = seconds;
-        //const currentHour = hours    
-        setSeconds(seconds + 1);
-        if (seconds >= 60) { 
-            setMinutes(minutes + 1);
-            setSeconds(0);
-        }
-        if (minutes >= 60) {
-            setHours(hours + 1);
-            setMinutes(0);
-        }
-        console.log(hours, minutes, seconds)
-    }
-    //countRef.current = setInterval(tick, 1000)
-   
+        /*
+        //@ts-ignore
+        countRef.current = setInterval(() => {
+            setTimer((timer) => timer + 1)
+            console.log(timer)
+          }, 2000)
     
+          */
     return (
         <div className={`time ${options.style} ${options.visibility}`}>
-            <h3>{`Time:  ${hours}`}<span>:</span>{addZero(String(minutes))}<span>:</span>{addZero(String(seconds))}</h3>
+            <h3>{`Time: ${formatTime()}`}</h3>
         </div>
     )
 }

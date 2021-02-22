@@ -1,10 +1,12 @@
-import React from 'react'
-
+import React, { useRef } from 'react'
+import { options } from '../../utills/options';
+import './index.css'
 
 export const Time: React.FC = (props): React.ReactElement => {
     const [minutes, setMinutes] = React.useState(0);
     const [seconds, setSeconds] = React.useState(0);
     const [hours, setHours] = React.useState(0);
+    const countRef = useRef(null)
 
     const addZero = (n: string) => {
         return (parseInt(n, 10) < 10 ? '0' : '') + n
@@ -24,16 +26,11 @@ export const Time: React.FC = (props): React.ReactElement => {
         }
         console.log(hours, minutes, seconds)
     }
-    //let intervalId = 
-    React.useEffect(() => {
-        
-        //return () => clearInterval(intervalId)
-        
-    }, [])
-    
+    //countRef.current = setInterval(tick, 1000)
+   
     
     return (
-        <div className='time asian'>
+        <div className={`time ${options.style} ${options.visibility}`}>
             <h3>{`Time:  ${hours}`}<span>:</span>{addZero(String(minutes))}<span>:</span>{addZero(String(seconds))}</h3>
         </div>
     )

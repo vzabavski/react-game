@@ -1,13 +1,15 @@
 import React from 'react';
 import './App.css';
-import { Game } from './components/Game Page';
+import { Game } from './components/Game Page/Game Page';
+import { Menu } from './components/MenuPage/MenuPage';
 
 
 
 function App() {
   return (
     <div className="App" >
-      <Game />
+      <Menu />
+      
     </div>
   );
 }

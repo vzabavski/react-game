@@ -1,0 +1,25 @@
+.time {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    margin: 0.5%;
+    font-size: 1.2rem;
+}
+
+.time.synt {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #b9b9b9;
+}
+
+.time.asian {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #2c0c0c;
+}
+
+@media(max-width: 500px) {
+    .time {
+      font-size: 1.2rem;
+    }
+  }

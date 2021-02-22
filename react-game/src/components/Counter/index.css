@@ -1,0 +1,13 @@
+.counter {
+    width: 40%;
+    margin: 20px 0 50px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+
+
+.counter.asian {
+    color: white;
+}

@@ -1,0 +1,15 @@
+.options-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    color: rgb(44, 42, 40);
+}
+.options-list-item {
+    margin: 10px;
+}
+.options-list-item:hover {
+   color: black;
+}

@@ -51,14 +51,15 @@ export const createCellsOrder = (n: number) => {
     arr = shuffle(arr).map((num, idx) => {
         return {[num]: String.fromCharCode(idx + 97)}
     });
-    return Object.assign({0: String.fromCharCode(n + 96)}, ...arr);
+    console.log(String.fromCharCode(options.size + 96))
+    return Object.assign({0: options.emptyPosition}, ...arr);
 }
 export const createArray = (n: number) => {
     const arr = []
     for (let i = 1; i < n; i++) {
         arr.push({[i]: String.fromCharCode(i + 96)});
     }
-    return Object.assign({0: String.fromCharCode(n + 96)}, ...arr)
+    return Object.assign({0: options.emptyPosition}, ...arr) 
 
 } 
 
@@ -85,5 +86,10 @@ export const setSizeStyle = () => {
             sizeStyle = 'nine-cells'
         }
     return sizeStyle
+}
+
+export const cleanLocalStorage = () => {
+    localStorage.removeItem('steps')
+    localStorage.removeItem('cells')
 }
 

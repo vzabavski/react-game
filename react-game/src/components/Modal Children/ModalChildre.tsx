@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { cleanLocalStorage } from '../../utills/game'
 import { options } from '../../utills/options'
 import './index.css'
 
@@ -29,17 +30,26 @@ export const Options: React.FC = (props): React.ReactElement => {
     const [vis, setVis] = useState(options.visibility)
     
     const handleStyleChange = (e: any) => {
-        setStyle(e.target.value);
-        options.style = e.target.value
+        const style = e.target.value
+        setStyle(style);
+        options.style = style
+        localStorage.setItem('style', style)
     }
     const handleSizeChange = (e: any) => {
-        setSize(e.target.value);
-        options.size = e.target.value
-        localStorage.clear()
+        const size = e.target.value
+        setSize(size);
+        options.size = size;
+        options.sizeClass = +size === 16 ? 'sixteen-cells' : 'nine-cells';
+        options.emptyPosition = +size === 16 ? 'p' : 'i'
+        localStorage.setItem('size', String(size))
+        localStorage.setItem('sizeClass', options.sizeClass)
+        cleanLocalStorage()
     }
     const handleVisChange = (e: any) => {
-        setVis(e.target.value);
-        options.visibility = e.target.value
+        const visibility = e.target.value
+        setVis(visibility);
+        options.visibility = visibility
+        localStorage.setItem('visibility', visibility)
     }
 
     return (

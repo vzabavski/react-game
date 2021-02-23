@@ -1,12 +1,12 @@
 import React from 'react'
 import './index.css'
-import { checkForComposure, createArray, createCellsOrder, isAcceptableToSwap, setSizeStyle, setSounOnClick } from '../../utills/game';
+import { checkForComposure, cleanLocalStorage, createArray, createCellsOrder, isAcceptableToSwap, setSounOnClick } from '../../utills/game';
 import { Cell } from '../Cell/Cell'
 import { ModalWindow }  from '../ModalWindow/ModalWindow'
 import { options } from '../../utills/options';
 import { Win } from '../Modal Children/ModalChildre';
 
-export class Gamefield extends React.Component<{addStep: ()=> void}> {
+export class Gamefield extends React.Component<{addStep: ()=> void, sizeClass?: string}> {
     state = {
         cells: createCellsOrder(options.size),
         visibility: 'empty'
@@ -56,7 +56,7 @@ export class Gamefield extends React.Component<{addStep: ()=> void}> {
             0: position,
             [num]: buffer
         }
-        if(true/*isAcceptableToSwap(movedCellPosition, emptyCellPosition, this.size)*/) {
+        if(true/*isAcceptableToSwap(movedCellPosition, emptyCellPosition, options.size)*/) {
              
             this.setState({
                 cells: newCellsPosotions
@@ -70,15 +70,15 @@ export class Gamefield extends React.Component<{addStep: ()=> void}> {
                     visibility: ''
                 })
                 options.win = true
-                localStorage.clear()
+                cleanLocalStorage()
             }
         }
     }
-
+    
     render() {
         const { cells } = this.state
         const creatCells = () => {
-            const arr = []                  // export
+            const arr = []                  
             for (let cell in cells) {
                 if(+cell === 0) {
                     arr.push(<Cell key={+cell} class={`${cells[cell]} empty`}  number={+cell}  swap={this.swapPositions} />)
@@ -88,15 +88,10 @@ export class Gamefield extends React.Component<{addStep: ()=> void}> {
             }
             return arr
         }
-        let sizeStyle = ''
-        if (options.size === 16) {
-            sizeStyle = 'sixteen-cells'
-        } else {
-            sizeStyle = 'nine-cells'
-        }
+        
         return(
             <>
-                <div className={`gamefield-wrapper ${options.style} ${setSizeStyle()}`} >
+                <div className={`gamefield-wrapper ${options.style} ${options.sizeClass}`} >
                 { creatCells() }
                 </div>
                 <ModalWindow visibility={this.state.visibility} children={<Win />} onClose={() => console.log('close')}/> 

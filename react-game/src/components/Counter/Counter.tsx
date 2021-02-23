@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { options } from '../../utills/options'
 import './index.css'
 interface CounterProps {

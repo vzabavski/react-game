@@ -6,6 +6,7 @@ import './index.css'
 
 
 export const Settings: React.FC = (props): React.ReactElement => {
+    
    return (
         <div>
             <h3>Mute sounds</h3>
@@ -43,6 +44,7 @@ export const Options: React.FC = (props): React.ReactElement => {
         options.emptyPosition = +size === 16 ? 'p' : 'i'
         localStorage.setItem('size', String(size))
         localStorage.setItem('sizeClass', options.sizeClass)
+        localStorage.setItem('position', options.emptyPosition)
         cleanLocalStorage()
     }
     const handleVisChange = (e: any) => {

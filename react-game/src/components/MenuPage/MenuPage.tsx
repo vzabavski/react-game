@@ -13,6 +13,7 @@ export const Menu: React.FC = (props): React.ReactElement => {
         setSettingsVisibility('empty')
     }
     
+    
     return (
         <div className='wrapper menu'>
             <div className='menu-wrapper'>

@@ -23,7 +23,45 @@ export const Win: React.FC = (props): React.ReactElement => {
              <h3>{`Steps: ${options.steps + 1}`}</h3>
          </div>
     )
- }
+}
+
+export const Score: React.FC = (props): React.ReactElement => {
+     //@ts-ignore
+    const nineCellsScore = options.score.filter(item => item['Size'] === 9)
+     //@ts-ignore
+    const sixteenCellsScore = options.score.filter(item => +item['Size'] === 16)
+    const createScoreList = (score: Array<object>) => {
+        if(score.length < 10) {
+        
+            return score.map((item: object, idx: number) => {
+                //@ts-ignore
+                return (<li key={idx + 1}>{`Steps: ${item['Steps']}`}</li>)
+            })
+        } else {
+            return score.slice(-10).map((item: object, idx: number) => {
+                //@ts-ignore
+                return (<li key={idx + 1}>{`Steps: ${item['Steps']}`}</li>)
+            })
+        }
+    }
+    return (
+        <>
+            <div>
+                <h3>9 cells field:</h3>
+                <ul>
+                    {createScoreList(nineCellsScore)}
+                </ul>
+            </div>
+            <div>
+                <h3>16 cells field:</h3>
+                <ul>
+                    {createScoreList(sixteenCellsScore)}
+                </ul>
+            </div>
+        </>
+         
+    )
+}
 
 export const Options: React.FC = (props): React.ReactElement => {
     const [style, setStyle] = useState(options.style)
@@ -37,7 +75,7 @@ export const Options: React.FC = (props): React.ReactElement => {
         localStorage.setItem('style', style)
     }
     const handleSizeChange = (e: any) => {
-        const size = e.target.value
+        const size = +e.target.value
         setSize(size);
         options.size = size;
         options.sizeClass = +size === 16 ? 'sixteen-cells' : 'nine-cells';

@@ -72,7 +72,7 @@ export class Gamefield extends React.Component<{addStep: ()=> void, sizeClass?: 
                 options.win = true
                 
                 //@ts-ignore 
-                localStorage.setItem('score', JSON.stringify(options.score.concat({'Steps': options.steps + 1, 'Size': options.size})))
+                localStorage.setItem('score', JSON.stringify(options.score.concat({'Steps': options.steps + 1, 'Size': options.size, 'Time': options.time})))
                 cleanLocalStorage()
             }
         }

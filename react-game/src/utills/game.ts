@@ -91,5 +91,14 @@ export const setSizeStyle = () => {
 export const cleanLocalStorage = () => {
     localStorage.removeItem('steps')
     localStorage.removeItem('cells')
+    localStorage.removeItem('time')
 }
 
+export  const formatTime = (time: number) => {
+    const getSec = `0${time % 60}`.slice(-2)
+    const min = Math.floor(time / 60);
+    const getMin = `0${min % 60}`.slice(-2)
+    const hour = Math.floor(min / 60);
+    const getHour = `0${hour % 60}`.slice(-2) 
+    return `${getHour}:${getMin}:${getSec}`
+}

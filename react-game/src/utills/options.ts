@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 const res = JSON.parse(String(localStorage.getItem('score')))
 export const options = {
@@ -8,7 +8,7 @@ export const options = {
     emptyPosition: localStorage.getItem('position') ? localStorage.getItem('position') : 'i',
     visibility: localStorage.getItem('visibility') ? String(localStorage.getItem('visibility')) : '',
     steps: 0,
-    time: '00:00:00',
+    time: 0,
     win: false,
     score: localStorage.getItem('score') ? res : []
 }

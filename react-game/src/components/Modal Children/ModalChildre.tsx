@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { cleanLocalStorage } from '../../utills/game'
+import { Link } from 'react-router-dom'
+import { cleanLocalStorage, formatTime } from '../../utills/game'
 import { options } from '../../utills/options'
 import './index.css'
 
@@ -19,8 +20,9 @@ export const Win: React.FC = (props): React.ReactElement => {
     return (
          <div>
              <h2>Congradulations!</h2>
-             <h3>{`Your time: ${options.time}`}</h3>
+             <h3>{`Your time: ${formatTime(options.time)}`}</h3>
              <h3>{`Steps: ${options.steps + 1}`}</h3>
+             <h3><Link to='/'>Menu</Link></h3>
          </div>
     )
 }
@@ -35,12 +37,12 @@ export const Score: React.FC = (props): React.ReactElement => {
         
             return score.map((item: object, idx: number) => {
                 //@ts-ignore
-                return (<li key={idx + 1}>{`Steps: ${item['Steps']}`}</li>)
+                return (<li key={idx + 1}>{`Time: ${formatTime(item['Time'])}  Steps: ${item['Steps']}`}</li>)
             })
         } else {
             return score.slice(-10).map((item: object, idx: number) => {
                 //@ts-ignore
-                return (<li key={idx + 1}>{`Steps: ${item['Steps']}`}</li>)
+                return (<li key={idx + 1}>{`Time: ${formatTime(item['Time'])}  Steps: ${item['Steps']}`}</li>)
             })
         }
     }

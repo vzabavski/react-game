@@ -16,13 +16,14 @@ export const Menu: React.FC = (props): React.ReactElement => {
     }
     
     
+    
     return (
         <div className='wrapper menu'>
             <div className='menu-wrapper'>
                 <h1>15 Puzzle</h1>
                 <ul className='menu-list'>
-                    <li className='menu-list-item' key='1'><Link to='/game' onClick={cleanLocalStorage}>New Game</Link></li>
-                    {localStorage.getItem('cells') &&(<li className='menu-list-item' key='2'><Link to='/game'>Continue</Link></li>)}
+                    <li className='menu-list-item' key='1'onClick={cleanLocalStorage}>New Game</li>
+                    {localStorage.getItem('cells') &&(<li className='menu-list-item' key='2'>Continue</li>)}
                     <li className='menu-list-item' key='3' onClick={() => setSettingsVisibility('')}>Settings</li>
                     <li className='menu-list-item' key='4' onClick={() => setOptionsVisibility('')}>Options</li>
                     <li className='menu-list-item' key='5' onClick={() => setScoreVisibility('')}>Score</li>

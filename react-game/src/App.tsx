@@ -6,12 +6,11 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 
 function App() {
+  console.log('Working!')
   return (
     <div className="App" >
-      <Router>
-        <Route path='/' component={Menu} exact />
-        <Route path='/game' component={Game} />
-      </Router>
+      <Menu/>
+      <Game/>
     </div>
   );
 }

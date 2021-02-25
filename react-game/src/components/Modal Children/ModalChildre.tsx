@@ -22,7 +22,7 @@ export const Win: React.FC = (props): React.ReactElement => {
              <h2>Congradulations!</h2>
              <h3>{`Your time: ${formatTime(options.time)}`}</h3>
              <h3>{`Steps: ${options.steps + 1}`}</h3>
-             <h3><Link to='/'>Menu</Link></h3>
+             
          </div>
     )
 }

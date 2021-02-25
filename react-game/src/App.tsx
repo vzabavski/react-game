@@ -9,8 +9,10 @@ function App() {
   console.log('Working!')
   return (
     <div className="App" >
-      <Menu/>
-      <Game/>
+      <Router>
+        <Route path='/' exact component={Menu} />
+        <Route path='/game' component={Game} />
+      </Router>
     </div>
   );
 }

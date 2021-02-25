@@ -13,7 +13,7 @@ function App() {
         <Switch>
           <Route path='/' exact component={Menu} />
           <Route path='/game' component={Game} />
-          <Redirect to='/' />
+          <Redirect to='/' /> 
         </Switch>
         
       </Router>

@@ -1,6 +1,6 @@
 import React from 'react'
 import './index.css'
-import { checkForComposure, cleanLocalStorage, createArray, createCellsOrder, isAcceptableToSwap, setSounOnClick } from '../../utills/game';
+import { checkForComposure, cleanLocalStorage, createArray, createCellsOrder, isAcceptableToSwap, setMusicOnClick, setSounOnClick } from '../../utills/game';
 import { Cell } from '../Cell/Cell'
 import { ModalWindow }  from '../ModalWindow/ModalWindow'
 import { options } from '../../utills/options';
@@ -9,15 +9,21 @@ import { Win } from '../Modal Children/ModalChildre';
 export class Gamefield extends React.Component<{addStep: ()=> void, sizeClass?: string}> {
     state = {
         cells: createCellsOrder(options.size),
-        visibility: 'empty'
+        visibility: 'empty',
+        sound: setSounOnClick(options.style),
+        music: setMusicOnClick()
     }
-    sound = setSounOnClick(options.style);
+    
     correctOrderObject = createArray(options.size);
     componentDidMount() {
         window.addEventListener('keypress', this.keyboardMoves);
+        this.state.sound.volume = options.sound_volume 
+        this.state.music.volume = options.music_volume 
+        this.state.music.play()
     }
     componentWillUnmount() {
         window.removeEventListener('keypress', this.keyboardMoves);
+        this.state.music.pause()
     }
     keyboardMoves = (event:any) => {
         const keyCode = event.keyCode;
@@ -64,7 +70,7 @@ export class Gamefield extends React.Component<{addStep: ()=> void, sizeClass?: 
             this.props.addStep();
             
             localStorage.setItem('cells', JSON.stringify(newCellsPosotions))
-            //this.sound.play();
+            this.state.sound.play();
             if(checkForComposure(newCellsPosotions, this.correctOrderObject)) {
                 this.setState({
                     visibility: ''

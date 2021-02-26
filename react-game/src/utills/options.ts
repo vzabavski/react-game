@@ -10,5 +10,9 @@ export const options = {
     steps: 0,
     time: 0,
     win: false,
-    score: localStorage.getItem('score') ? res : []
+    score: localStorage.getItem('score') ? res : [],
+    sound_volume: 1,
+    music_volume: 0,
+    music_authoplay: true,
+    sound_authoplay: false
 }

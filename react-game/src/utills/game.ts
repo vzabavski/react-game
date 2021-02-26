@@ -1,4 +1,10 @@
 import { options } from "./options";
+//@ts-ignore
+import synt_sound from '../assets/sounds/synt_sound.mp3' 
+//@ts-ignore
+import asian_sound from '../assets/sounds/asian_sound.mp3' 
+//@ts-ignore
+import test from '../assets/sounds/test.mp3' 
 
 export const isAcceptableToSwap = (from: string, to:string,  size:number):Boolean => {
     if(from && to) {
@@ -72,12 +78,20 @@ export const checkForComposure = (currentOrderObject: object, correctOrderObject
 }
 export const setSounOnClick = (type: string) => {
     switch(type) {
-        case 'synt': return new Audio('https://dm0qx8t0i9gc9.cloudfront.net/previews/audio/BsTwCwBHBjzwub4i4/laser-burst_Gyjp5_Ed_NWM.mp3');
-        case 'asian': return new Audio('https://www.fesliyanstudios.com/play-mp3/389');
+        case 'synt': return new Audio(synt_sound);
+        case 'asian': return new Audio(asian_sound);
         default: return new Audio('https://www.fesliyanstudios.com/play-mp3/387')
     }
 }
 
+export const setMusicOnClick = (type?: string) => {
+    switch(type) {
+        case 'synt': return new Audio(synt_sound);
+        case 'asian': return new Audio(asian_sound);
+        default: return new Audio(test)
+    }
+}
+ 
 export const setSizeStyle = () => {
     let sizeStyle = ''
         if (options.size === 16) {

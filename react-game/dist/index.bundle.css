@@ -1,0 +1,327 @@
+@import url(https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Staatliches&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap);
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrapper.menu {
+  height: 100vh;
+  justify-content: center;
+  background: cornsilk;
+}
+.invisible {
+  visibility: hidden;
+}
+.empty {
+  display: none;
+}
+
+.synt {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.wrapper.synt {
+  background-image: url(assets/fonts/344034.png);
+  background-size: auto 100%;
+}
+
+.asian {
+  font-family: 'Xanh Mono', monospace;
+}
+
+.wrapper.asian {
+  background: url(assets/fonts/VZqFssW.jpg);
+  background-size: 100% 100%;
+}
+
+
+.a {
+  grid-area: a;
+}
+.b {
+  grid-area: b;
+}
+.c {
+  grid-area: c;
+}
+.d {
+  grid-area: d;
+}
+.e {
+  grid-area: e;
+}
+.f {
+  grid-area: f;
+}
+.g {
+  grid-area: g;
+}
+.h {
+  grid-area: h;
+}
+.i {
+  grid-area: i;
+}
+.j {
+  grid-area: j;
+}
+.k {
+  grid-area: k;
+}
+.l {
+  grid-area: l;
+}
+.m {
+  grid-area: m;
+}
+.n {
+  grid-area: n;
+}
+.o {
+  grid-area: o;
+}
+.p {
+  grid-area: p;
+}
+
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.counter {
+    width: 40%;
+    margin: 20px 0 50px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+
+
+.counter.asian {
+    color: white;
+}
+.gamefield-wrapper {
+    width: 60vh;
+    height: 60vh;
+    display: grid;
+    grid-gap: 5px;
+}
+.gamefield-wrapper.asian {
+    background:rgba(105, 31, 15, 0.8);
+    border: 10px solid rgba(87, 38, 12, 1);;
+    border-radius: 15px;
+}
+.nine-cells {
+    grid-template-areas: 
+    "a b c"
+    "d e f"
+    "g h i";
+}
+.sixteen-cells {
+    grid-template-areas: 
+    "a b c d"
+    "e f g h"
+    "i j k l"
+    "m n o p";
+}
+
+@media(max-width: 500px) {
+    .gamefield-wrapper {
+      width: 70vw;
+      height: 70vw;
+    }
+  }
+.cell.empty {
+    display: none;
+}
+.cell {
+    border-radius: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px ;
+    cursor: pointer;
+}
+
+.number {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40%;
+}
+
+.cell.synt {
+    font-size: 1.2rem;
+    font-weight: 700;
+    box-shadow: rgba(0, 0, 0, 0.5) 5px 3px;
+    background:rgb(250, 249, 253);
+}
+
+.number.synt {
+    color: rgb(198, 0, 248);
+    border: 1px solid rgb(85, 7, 173);
+    background: rgb(231,196,233);
+    background: radial-gradient(circle, rgba(231,196,233,1) 16%, rgba(255,255,255,1) 100%);
+}
+
+.cell.asian {
+    font-size: 1.2rem;
+    font-weight: 700;
+    box-shadow: rgba(0, 0, 0, 0.5) 5px 3px;
+    background:rgb(224, 218, 210);
+}
+
+.number.asian {
+    border: 1px solid rgba(237, 223, 209, 1);
+    background: rgba(223, 209, 196, 0.8);
+}
+
+.modal {
+    max-width: 800px;
+    width: 30vw;
+    min-height: 45vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: wheat;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+}
+.modal.empty {
+    display: none;
+}
+.button_wrapper {
+    width: 100%;
+    position: relative;
+    margin-bottom: 10%;
+}
+.close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+.options_block {
+    display: flex;
+    margin: 5%;
+}
+
+.time {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5%;
+    font-size: 1.2rem;
+}
+
+.time.synt {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #b9b9b9;
+}
+
+.time.asian {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #2c0c0c;
+}
+
+.controls-btn {
+    width: 100px;
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+    margin: 3px;
+}
+
+@media(max-width: 500px) {
+    .time {
+      font-size: 1.2rem;
+    }
+  }
+.menu-wrapper {
+    max-width: 600px;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.menu-list{
+    height: 100%;
+    margin-top: 4%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 2rem;
+    cursor: pointer;
+    
+}
+.menu-list-item {
+    margin: 5px;
+}
+.menu-list-item:hover {
+    font-size: 2.1rem;
+    transition: 0.2s ease;
+}
+

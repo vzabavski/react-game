@@ -4,6 +4,10 @@ import synt_sound from '../assets/sounds/synt_sound.mp3'
 //@ts-ignore
 import asian_sound from '../assets/sounds/asian_sound.mp3' 
 //@ts-ignore
+import default_sound from '../assets/sounds/default_sound.mp3'
+//@ts-ignore
+import menu_sound from '../assets/sounds/menu_sound.mp3'
+//@ts-ignore
 import test from '../assets/sounds/test.mp3' 
 
 export const isAcceptableToSwap = (from: string, to:string,  size:number):Boolean => {
@@ -76,19 +80,21 @@ export const checkForComposure = (currentOrderObject: object, correctOrderObject
         return true
     }
 }
-export const setSounOnClick = (type: string) => {
+export const setSounOnClick = (type?: string) => {
     switch(type) {
         case 'synt': return new Audio(synt_sound);
         case 'asian': return new Audio(asian_sound);
-        default: return new Audio('https://www.fesliyanstudios.com/play-mp3/387')
+        case 'default': return new Audio(default_sound);
+        default: return new Audio(menu_sound)
     }
 }
-
-export const setMusicOnClick = (type?: string) => {
+ 
+export const setMusicForGame = (type?: string) => {
     switch(type) {
-        case 'synt': return new Audio(synt_sound);
-        case 'asian': return new Audio(asian_sound);
-        default: return new Audio(test)
+        case 'synt': return new Audio('https://music.xn--41a.ws/public/play_song.php?id=371745466_456290658&hash=f1c642e224be158d3b87590897f5d5cecedda2258fb1ecf50b5cce79ba29dc6c&artist=Kavinsky&title=Nightcall');
+        case 'asian': return new Audio('https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview123/v4/35/c0/f7/35c0f7ae-a716-5464-b2c0-97553b6c5588/mzaf_17752793769674305613.plus.aac.p.m4a');
+        case 'default': return new Audio( 'https://t4.bcbits.com/stream/1cf2461a7b0c74510aad41ae3e382ef3/mp3-128/3656957529?p=0&ts=1614448771&t=41580569cf6e137bb8855fa00c248c4b432aca49&token=1614448771_9313018893a1e1556049d4441e78c078621341fb');
+        default: return new Audio('https://cdns-preview-e.dzcdn.net/stream/c-ebb15dde79b75fb3961b3b339722257b-3.mp3')
     }
 }
  

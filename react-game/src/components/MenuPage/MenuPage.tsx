@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, Redirect } from 'react-router-dom'
-import { cleanLocalStorage, setMusicOnClick, setSounOnClick } from '../../utills/game'
+import { cleanLocalStorage, setMusicForGame, setSounOnClick } from '../../utills/game'
 import { options } from '../../utills/options'
 import { Options, Score, Settings } from '../Modal Children/ModalChildre'
 import { ModalWindow } from '../ModalWindow/ModalWindow'
@@ -23,7 +23,7 @@ export const Menu: React.FC = (props): React.ReactElement => {
         cleanLocalStorage()
         music.pause()
     }
-    const music = setMusicOnClick()
+    const music = setMusicForGame()
     React.useEffect(() => {
         
         music.volume = options.music_volume
@@ -34,7 +34,7 @@ export const Menu: React.FC = (props): React.ReactElement => {
         return () => music.pause()
     }, [options.music_volume])
 
-    const sound = setSounOnClick(options.style)
+    const sound = setSounOnClick()
     const playSound = React.useCallback(() => {
         sound.volume = options.sound_volume
         sound.play()

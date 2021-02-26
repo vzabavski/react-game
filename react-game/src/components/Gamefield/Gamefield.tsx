@@ -1,6 +1,6 @@
 import React from 'react'
 import './index.css'
-import { checkForComposure, cleanLocalStorage, createArray, createCellsOrder, isAcceptableToSwap, setMusicOnClick, setSounOnClick } from '../../utills/game';
+import { checkForComposure, cleanLocalStorage, createArray, createCellsOrder, isAcceptableToSwap, setMusicForGame, setSounOnClick } from '../../utills/game';
 import { Cell } from '../Cell/Cell'
 import { ModalWindow }  from '../ModalWindow/ModalWindow'
 import { options } from '../../utills/options';
@@ -11,7 +11,7 @@ export class Gamefield extends React.Component<{addStep: ()=> void, sizeClass?: 
         cells: createCellsOrder(options.size),
         visibility: 'empty',
         sound: setSounOnClick(options.style),
-        music: setMusicOnClick()
+        music: setMusicForGame(options.style)
     }
     
     correctOrderObject = createArray(options.size);
@@ -76,9 +76,11 @@ export class Gamefield extends React.Component<{addStep: ()=> void, sizeClass?: 
                     visibility: ''
                 })
                 options.win = true
-                
+                this.state.music.pause()
+                const newScore = options.score.concat({'Steps': options.steps + 1, 'Size': options.size, 'Time': options.time})
+                options.score = newScore
                 //@ts-ignore 
-                localStorage.setItem('score', JSON.stringify(options.score.concat({'Steps': options.steps + 1, 'Size': options.size, 'Time': options.time})))
+                localStorage.setItem('score', JSON.stringify(newScore))
                 cleanLocalStorage()
             }
         }

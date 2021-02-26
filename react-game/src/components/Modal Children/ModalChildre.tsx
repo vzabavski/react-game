@@ -1,19 +1,49 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import InputRange from 'react-input-range';
 import { cleanLocalStorage, formatTime } from '../../utills/game'
 import { options } from '../../utills/options'
 import './index.css'
 
 
 
-export const Settings: React.FC = (props): React.ReactElement => {
+export const Settings: React.FC = (): React.ReactElement => {
+   
+    const [volue, setVolume] = useState(options.music_volume)
+    const [sound, setSound] = useState(options.sound_volume)
+    const handleVolumeChange = (e:any) => {
+        setVolume(+e.target.value);
+        options.music_volume = +e.target.value
+    }
+    const handleSoundChange = (e:any) => {
+        setSound(+e.target.value);
+        options.sound_volume = +e.target.value
+    }
     
-   return (
-        <div>
-            <h3>Mute sounds</h3>
-            <h3>Mute music</h3>
-        </div>
-   )
+        return (
+            <>
+                    <div>
+                        <label>Volume: 
+                            <select value={volue} onChange={handleVolumeChange}>
+                                <option value={0}>0</option>
+                                <option value={0.5}>0.5</option>
+                                <option value={1}>1</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div>
+                        <label>Sounds: 
+                            <select value={sound} onChange={handleSoundChange}>
+                                <option value={0}>0</option>
+                                <option value={0.5}>0.5</option>
+                                <option value={1}>1</option>
+                            </select>
+                        </label>
+                    </div>
+            </>
+                
+        )
+    
 }
 
 export const Win: React.FC = (props): React.ReactElement => {

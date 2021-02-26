@@ -1,7 +1,8 @@
 const path = require('path')
+const webpack = require('webpack')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
     context: path.resolve(__dirname, 'src'),
@@ -16,6 +17,14 @@ module.exports = {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
+    devServer: {
+        historyApiFallback: true,
+        contentBase: path.resolve(__dirname, './dist'),
+        open: true,
+        compress: true,
+        hot: true,
+        port: 8080,
+    },
     module: {
         rules: [
             //{ enforce: 'pre', test: /\.js$/, loader: "eslint-loader"},
@@ -29,17 +38,10 @@ module.exports = {
                 use: [MiniCssExtractPlugin.loader, 'css-loader']
             },
             {
-                test: /\.svg/,
-                use: {
-                  loader: "svg-url-loader",
-                  options: {},
-                },
-            },
-            {
-                test: /\.(png|jpe?g|gif)$/i,
+                test: /\.(svg|png|jpe?g|gif|mp3)$/i,
                 use: [
                     {
-                    loader: 'file-loader?name=assets/fonts/[name].[ext]',
+                    loader: 'file-loader?name=assets/[name].[ext]',
                     },
                ],
             },
@@ -52,6 +54,8 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].bundle.css'
         }),
+        new webpack.HotModuleReplacementPlugin(),
+        new CleanWebpackPlugin()
     ]
 };
 

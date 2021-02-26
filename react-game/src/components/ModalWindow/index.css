@@ -24,4 +24,6 @@
     position: absolute;
     top: 5px;
     right: 5px;
+    background-color: wheat;
+    border: none;
 }

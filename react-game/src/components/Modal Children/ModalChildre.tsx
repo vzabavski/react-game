@@ -9,7 +9,7 @@ import './index.css'
 
 export const Settings: React.FC = (): React.ReactElement => {
    
-    const [volue, setVolume] = useState(options.music_volume)
+    const [volume, setVolume] = useState(options.music_volume)
     const [sound, setSound] = useState(options.sound_volume)
     const handleVolumeChange = (e:any) => {
         setVolume(+e.target.value);
@@ -24,20 +24,24 @@ export const Settings: React.FC = (): React.ReactElement => {
             <>
                     <div>
                         <label>Volume: 
-                            <select value={volue} onChange={handleVolumeChange}>
-                                <option value={0}>0</option>
-                                <option value={0.5}>0.5</option>
-                                <option value={1}>1</option>
-                            </select>
+                            <input 
+                                id="typeinp" 
+                                type="range" 
+                                min="0" max="1" 
+                                value={volume} 
+                                onChange={handleVolumeChange}
+                                step="0.1"/>
                         </label>
                     </div>
                     <div>
                         <label>Sounds: 
-                            <select value={sound} onChange={handleSoundChange}>
-                                <option value={0}>0</option>
-                                <option value={0.5}>0.5</option>
-                                <option value={1}>1</option>
-                            </select>
+                        <input 
+                                id="typeinp" 
+                                type="range" 
+                                min="0" max="1" 
+                                value={sound} 
+                                onChange={handleSoundChange}
+                                step="0.1"/>
                         </label>
                     </div>
             </>

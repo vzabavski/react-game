@@ -6,14 +6,16 @@ import closeI from '../../assets/close.svg'
 
 interface WindowProps {
     visibility: string;
-    onClose: () => void
+    onClose: () => void;
+    type?: string
 }
 
 export const ModalWindow: React.FC<WindowProps> = (props): React.ReactElement => {
     return (
         <div className={`modal ${props.visibility}`}>
-            <div className='button_wrapper'><button className='close' onClick={props.onClose}><img src={closeI} width='30px' height='30px' alt='close'/></button></div>
+            {props.type !== 'win' && <div className='button_wrapper'><button className='close' onClick={props.onClose}><img src={closeI} width='30px' height='30px' alt='close'/></button></div>}
             {props.children}
+            {props.type === 'settings' && <button className='controls-btn' onClick={props.onClose}>Save</button>}
         </div>
     )
 } 

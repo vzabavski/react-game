@@ -9,6 +9,13 @@
     border: 10px solid rgba(87, 38, 12, 1);;
     border-radius: 15px;
 }
+
+.gamefield-wrapper.default { 
+    border: 2px solid rgb(177, 76, 63);;
+    border-radius: 2px;
+    grid-gap: 0px;
+}
+
 .nine-cells {
     grid-template-areas: 
     "a b c"

@@ -41,7 +41,7 @@ export const Time: React.FC = (props): React.ReactElement => {
     return (
         <div className={`time ${options.style} ${options.visibility}`}>
             <h3>{`Time: ${formatTime(time)}`}</h3>
-            <button className='controls-btn' onClick={() => setTimerOn(false)}>Pause</button>
+            <button className={`controls-btn ${options.style}`} onClick={() => setTimerOn(false)}>{timerOn ? 'Pause' : 'Play'}</button>
         </div>
 
     )

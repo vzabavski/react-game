@@ -53,7 +53,7 @@ export const Menu: React.FC = (props): React.ReactElement => {
                     <li className='menu-list-item' key='5' onClick={() => setScoreVisibility('')}>Score</li>
                 </ul>
             </div>
-            <ModalWindow  visibility={settingsVisibility} children={<Settings/>} onClose={onClose}/>
+            <ModalWindow  visibility={settingsVisibility} children={<Settings/>} onClose={onClose} type='settings'/>
             <ModalWindow  visibility={optionsVisibility} children={<Options/>} onClose={onClose}/>
             <ModalWindow  visibility={scoreVisibility} children={<Score />} onClose={onClose}/>
         </div>

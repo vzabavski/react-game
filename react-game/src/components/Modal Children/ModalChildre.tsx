@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import InputRange from 'react-input-range';
 import { cleanLocalStorage, formatTime } from '../../utills/game'
 import { options } from '../../utills/options'
 import './index.css'
 import Select from '@material-ui/core/Select/Select';
-import { InputLabel, MenuItem } from '@material-ui/core';
+import { InputLabel, MenuItem, Tab, Tabs } from '@material-ui/core';
+import { a11yProps, TabPanel } from '../../utills/design'
 
 
 
@@ -83,20 +83,31 @@ export const Score: React.FC = (props): React.ReactElement => {
             })
         }
     }
+    const [tab, setTab] = useState(0)
+    const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+        setTab(newValue);
+    };
+
+    
+
     return (
         <>
-            <div>
-                <h3>9 cells field:</h3>
-                <ul>
-                    {createScoreList(nineCellsScore)}
-                </ul>
-            </div>
-            <div>
-                <h3>16 cells field:</h3>
-                <ul>
-                    {createScoreList(sixteenCellsScore)}
-                </ul>
-            </div>
+            <Tabs
+                value={tab}
+                onChange={handleChange}
+                indicatorColor="primary"
+                textColor="primary"
+                centered
+            >
+                <Tab label="9 cells field" {...a11yProps(0)} />
+                <Tab label="16 cells field" {...a11yProps(1)} />
+            </Tabs>
+            <TabPanel value={tab} index={0}>
+                {createScoreList(nineCellsScore)}
+            </TabPanel>
+            <TabPanel value={tab} index={1}>
+                {createScoreList(sixteenCellsScore)}
+            </TabPanel>
         </>
          
     )

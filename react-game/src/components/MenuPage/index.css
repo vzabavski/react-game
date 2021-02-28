@@ -6,6 +6,9 @@
     align-items: center;
     justify-content: center;
 }
+.menu-wrapper h1 {
+    color: rgb(21, 34, 109);
+}
 .menu-list{
     height: 100%;
     margin-top: 4%;
@@ -13,13 +16,15 @@
     margin: 0;
     padding: 0;
     font-size: 2rem;
+    color: rgb(52, 24, 66);
+    padding-bottom: 2px;
+    text-decoration: none;
     cursor: pointer;
-    
 }
 .menu-list-item {
     margin: 5px;
 }
 .menu-list-item:hover {
     font-size: 2.1rem;
-    transition: 0.2s ease;
+    text-decoration: underline;
 }

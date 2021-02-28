@@ -4,6 +4,9 @@ import InputRange from 'react-input-range';
 import { cleanLocalStorage, formatTime } from '../../utills/game'
 import { options } from '../../utills/options'
 import './index.css'
+import Select from '@material-ui/core/Select/Select';
+import { InputLabel, MenuItem } from '@material-ui/core';
+
 
 
 
@@ -21,7 +24,7 @@ export const Settings: React.FC = (): React.ReactElement => {
     }
     
         return (
-            <>
+            <div className='settings_wrapper'>
                     <div>
                         <label>Volume: 
                             <input 
@@ -44,7 +47,7 @@ export const Settings: React.FC = (): React.ReactElement => {
                                 step="0.1"/>
                         </label>
                     </div>
-            </>
+            </div>
                 
         )
     
@@ -52,7 +55,7 @@ export const Settings: React.FC = (): React.ReactElement => {
 
 export const Win: React.FC = (props): React.ReactElement => {
     return (
-         <div>
+         <div className='win'>
              <h2>Congradulations!</h2>
              <h3>{`Your time: ${formatTime(options.time)}`}</h3>
              <h3>{`Steps: ${options.steps + 1}`}</h3>
@@ -129,28 +132,28 @@ export const Options: React.FC = (props): React.ReactElement => {
     }
 
     return (
-        <div>
+        <div className='options'>
             <div className='options_block'>
-                <h3>Style: </h3>
-                <select value={style} onChange={handleStyleChange}>
-                    <option value="default">Default</option>
-                    <option value="asian">Asian vibe</option>
-                    <option value="synt">Synt-wave</option>
-                </select>
+                <InputLabel id="style" className="select-label">Style: </InputLabel>
+                <Select labelId="style" id="select" value={style} onChange={handleStyleChange} >
+                    <MenuItem value="default">Default</MenuItem>
+                    <MenuItem value="asian">Asian vibe</MenuItem>
+                    <MenuItem value="synt">Synt-wave</MenuItem>
+                </Select>
             </div>
             <div className='options_block'>
-                <h3>Size: </h3>
-                <select value={size} onChange={handleSizeChange}>
-                    <option value={9}>3X3</option>
-                    <option value={16}>4X4</option>
-                </select>
+                <InputLabel id="size" className="select-label">Size: </InputLabel>
+                <Select labelId="size" id="select" value={size} onChange={handleSizeChange} >
+                    <MenuItem value={9}>3X3</MenuItem>
+                    <MenuItem value={16}>4X4</MenuItem>
+                </Select>
             </div>
             <div className='options_block'>
-                <h3>Hide stats: </h3>
-                <select value={vis} onChange={handleVisChange}>
-                    <option value=''>Show</option>
-                    <option value='invisible'>Hide</option>
-                </select>
+                <InputLabel id="vis" className="select-label">Hide stats: </InputLabel>
+                <Select labelId="vis" id="select" value={vis} onChange={handleVisChange} >
+                    <MenuItem value=''>Show</MenuItem>
+                    <MenuItem value='invisible'>Hide</MenuItem>
+                </Select>
             </div>
         </div>
     )

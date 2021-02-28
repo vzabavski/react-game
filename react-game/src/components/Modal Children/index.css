@@ -2,3 +2,24 @@
     display: flex;
     margin: 5%;
 }
+
+.settings_wrapper {
+    margin-bottom: 50px;
+}
+#typeinp {
+    width: 150px;
+    height: 20px;
+    margin-top: 18px;
+}
+
+.options{
+    margin-top: 50px;
+}
+
+.win {
+    margin-top: 50px;
+}
+
+.select-label {
+    margin: 7px 4px 0;
+}

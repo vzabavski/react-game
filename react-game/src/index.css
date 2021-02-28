@@ -26,7 +26,8 @@ code {
 .wrapper.menu {
   height: 100vh;
   justify-content: center;
-  background: cornsilk;
+  background: rgb(250,209,209);
+  background: radial-gradient(circle, rgba(250,209,209,0.7876284302783614) 28%, rgba(243,126,125,1) 100%); 
 }
 .invisible {
   visibility: hidden;
@@ -112,3 +113,10 @@ code {
   grid-area: p;
 }
 
+
+@media(max-width: 500px) {
+  .wrapper {
+    height: 100vh;
+    justify-content: center;
+  }
+}

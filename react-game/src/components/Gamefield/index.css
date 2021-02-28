@@ -16,6 +16,19 @@
     grid-gap: 0px;
 }
 
+.menu-arrow {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.76);
+}
+.menu-arrow img {
+    padding: 20px;
+}
+
 .nine-cells {
     grid-template-areas: 
     "a b c"
@@ -34,5 +47,15 @@
     .gamefield-wrapper {
       width: 70vw;
       height: 70vw;
+    }
+    .menu-arrow {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        width: 40px;
+        height: 40px;
+    }
+    .menu-arrow img {
+        padding: 10px;
     }
   }

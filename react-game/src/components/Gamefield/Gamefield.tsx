@@ -1,10 +1,13 @@
 import React from 'react'
 import './index.css'
+//@ts-ignore
+import arrow from '../../assets/left-arrow.svg'
 import { checkForComposure, cleanLocalStorage, createArray, createCellsOrder, isAcceptableToSwap, setMusicForGame, setSounOnClick } from '../../utills/game';
 import { Cell } from '../Cell/Cell'
 import { ModalWindow }  from '../ModalWindow/ModalWindow'
 import { options } from '../../utills/options';
 import { Win } from '../Modal Children/ModalChildre';
+import { Link } from 'react-router-dom';
 
 export class Gamefield extends React.Component<{addStep: ()=> void, sizeClass?: string}> {
     state = {
@@ -102,6 +105,10 @@ export class Gamefield extends React.Component<{addStep: ()=> void, sizeClass?: 
         
         return(
             <>
+                <div className='menu-arrow'>
+                    <Link to='/'><img src={arrow} alt='arrow' width='20px' height='20px'/></Link>
+                   
+                </div>
                 <div className={`gamefield-wrapper ${options.style} ${options.sizeClass}`} >
                 { creatCells() }
                 </div>

@@ -17,10 +17,10 @@ export const Menu: React.FC = (props): React.ReactElement => {
         setScoreVisibility('empty')
     }
     const clearProcess = (e: any) => {
-        if(e.target.datatype === 'continue') {
+        if(e.target.innerText !== 'Continue') {
+            cleanLocalStorage()
             music.pause()
         }
-        cleanLocalStorage()
         music.pause()
     }
     const music = setMusicForGame()
@@ -46,8 +46,8 @@ export const Menu: React.FC = (props): React.ReactElement => {
             <div className='menu-wrapper' onClick={playSound}>
                 <h1>15 Puzzle</h1>
                 <ul className='menu-list'>
-                    <li className='menu-list-item' key='1'><Link to='/game' onClick={clearProcess} >New Game</Link></li>
-                    {localStorage.getItem('cells') &&(<li className='menu-list-item' key='2'><Link to='/game' datatype='continue' onClick={clearProcess}>Continue</Link></li>)}
+                    <li className='menu-list-item' key='1'><Link className='menu-list' to='/game' onClick={clearProcess} >New Game</Link></li>
+                    {localStorage.getItem('cells') &&(<li key='2'><Link className='menu-list' to='/game' datatype='continue' onClick={clearProcess}>Continue</Link></li>)}
                     <li className='menu-list-item' key='3' onClick={() => setSettingsVisibility('')}>Settings</li>
                     <li className='menu-list-item' key='4' onClick={() => setOptionsVisibility('')}>Options</li>
                     <li className='menu-list-item' key='5' onClick={() => setScoreVisibility('')}>Score</li>

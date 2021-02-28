@@ -112,7 +112,7 @@ export class Gamefield extends React.Component<{addStep: ()=> void, sizeClass?: 
                 <div className={`gamefield-wrapper ${options.style} ${options.sizeClass}`} >
                 { creatCells() }
                 </div>
-                <ModalWindow visibility={this.state.visibility} children={<Win />} onClose={() => console.log('close')} type='win' /> 
+                <ModalWindow visibility={''} children={<Win />} onClose={() => console.log('close')} type='win' /> 
             </>
             
         )

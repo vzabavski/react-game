@@ -57,3 +57,9 @@
     border: 1px solid rgba(237, 223, 209, 1);
     background: rgba(223, 209, 196, 0.8);
 }
+
+@media(max-width: 500px) {
+    .number.synt {
+        font-size: 1rem;
+    }
+  }

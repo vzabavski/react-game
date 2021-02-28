@@ -28,6 +28,14 @@
     border: none;
 }
 
+@media(max-width: 1400px) {
+  .modal {
+    width: 420px;
+    height: 320px;
+  }
+}
+
+
 @media(max-width: 800px) {
     .modal {
       width: 60vw;
@@ -41,3 +49,11 @@
       height: 70vw;
     }
   }
+
+@media(max-width: 450px) {
+  .modal {
+    min-height: 35vh;
+    width: 70vw;
+    height: 50vw;
+  }
+}

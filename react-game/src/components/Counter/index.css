@@ -44,4 +44,9 @@
     .counter.asian h5 {
         margin-top: 15px;
     }
-  }
+    .counter.synt {
+        width: 50%;
+        height: 50px;
+        font-size: 1rem;
+    }
+}

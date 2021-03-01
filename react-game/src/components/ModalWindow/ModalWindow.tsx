@@ -6,7 +6,7 @@ import closeI from '../../assets/close.svg'
 
 interface WindowProps {
     visibility: string;
-    onClose: () => void;
+    onClose?: () => void;
     type?: string
 }
 

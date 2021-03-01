@@ -31,4 +31,7 @@
     .footer-logo {
         margin: 0;
     }
+    .footer-title {
+        margin-top: 5px;
+    }
 }

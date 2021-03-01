@@ -65,7 +65,7 @@ export class Gamefield extends React.Component<{addStep: ()=> void, sizeClass?: 
             0: position,
             [num]: buffer
         }
-        if(true/*isAcceptableToSwap(movedCellPosition, emptyCellPosition, options.size)*/) {
+        if(isAcceptableToSwap(movedCellPosition, emptyCellPosition, options.size)) {
              
             this.setState({
                 cells: newCellsPosotions
@@ -112,7 +112,7 @@ export class Gamefield extends React.Component<{addStep: ()=> void, sizeClass?: 
                 <div className={`gamefield-wrapper ${options.style} ${options.sizeClass}`} >
                 { creatCells() }
                 </div>
-                <ModalWindow visibility={this.state.visibility} children={<Win />} onClose={() => console.log('close')} type='win' /> 
+                <ModalWindow visibility={this.state.visibility} children={<Win />} type='win' /> 
             </>
             
         )

@@ -8,7 +8,6 @@ export const Time: React.FC = (props): React.ReactElement => {
     const [timerOn, setTimerOn] = React.useState(false);
     const hanldeStart = () => {
         setTimerOn(true)
-        console.log('work')
         //@ts-ignore
         document.querySelector('.gamefield-wrapper').removeEventListener('click', hanldeStart)
     }

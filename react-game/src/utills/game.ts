@@ -68,7 +68,6 @@ export const createCellsOrder = (n: number) => {
     arr = shuffle(arr).map((num, idx) => {
         return {[num]: String.fromCharCode(idx + 97)}
     });
-    console.log(String.fromCharCode(options.size + 96))
     return Object.assign({0: options.emptyPosition}, ...arr);
 }
 export const createArray = (n: number) => {

@@ -8,7 +8,6 @@ export const Time: React.FC = (props): React.ReactElement => {
     const [timerOn, setTimerOn] = React.useState(false);
     const hanldeStart = () => {
         setTimerOn(true)
-        console.log('work')
         //@ts-ignore
         document.querySelector('.gamefield-wrapper').removeEventListener('click', hanldeStart)
     }
@@ -41,7 +40,7 @@ export const Time: React.FC = (props): React.ReactElement => {
     return (
         <div className={`time ${options.style} ${options.visibility}`}>
             <h3>{`Time: ${formatTime(time)}`}</h3>
-            <button className='controls-btn' onClick={() => setTimerOn(false)}>Pause</button>
+            <button className={`controls-btn ${options.style}`} onClick={() => setTimerOn(!timerOn)}>{timerOn ? 'Pause' : 'Play'}</button>
         </div>
 
     )

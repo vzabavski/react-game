@@ -19,6 +19,19 @@
     border-radius: 40%;
 }
 
+.cell.default {
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: 1px rgb(22, 18, 18);
+    border-radius: 0;
+    background:rgb(253, 200, 200);
+}
+
+.number.default {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
 .cell.synt {
     font-size: 1.2rem;
     font-weight: 700;
@@ -44,3 +57,9 @@
     border: 1px solid rgba(237, 223, 209, 1);
     background: rgba(223, 209, 196, 0.8);
 }
+
+@media(max-width: 500px) {
+    .number.synt {
+        font-size: 1rem;
+    }
+  }

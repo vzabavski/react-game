@@ -1,4 +1,21 @@
 import { options } from "./options";
+//@ts-ignore
+import synt_sound from '../assets/sounds/synt_sound.mp3' 
+//@ts-ignore
+import asian_sound from '../assets/sounds/asian_sound.mp3' 
+//@ts-ignore
+import default_sound from '../assets/sounds/default_sound.mp3'
+//@ts-ignore
+import menu_sound from '../assets/sounds/menu_sound.mp3'
+//@ts-ignore
+import menu_music from '../assets/sounds/menu_music.mp3'
+//@ts-ignore
+import asian_music from '../assets/sounds/asian_music.mp3'
+//@ts-ignore
+import synt_music from '../assets/sounds/synt_music.mp3'
+//@ts-ignore
+import default_music from '../assets/sounds/default_music.mp3'
+
 
 export const isAcceptableToSwap = (from: string, to:string,  size:number):Boolean => {
     if(from && to) {
@@ -51,7 +68,6 @@ export const createCellsOrder = (n: number) => {
     arr = shuffle(arr).map((num, idx) => {
         return {[num]: String.fromCharCode(idx + 97)}
     });
-    console.log(String.fromCharCode(options.size + 96))
     return Object.assign({0: options.emptyPosition}, ...arr);
 }
 export const createArray = (n: number) => {
@@ -70,14 +86,24 @@ export const checkForComposure = (currentOrderObject: object, correctOrderObject
         return true
     }
 }
-export const setSounOnClick = (type: string) => {
+export const setSounOnClick = (type?: string) => {
     switch(type) {
-        case 'synt': return new Audio('https://dm0qx8t0i9gc9.cloudfront.net/previews/audio/BsTwCwBHBjzwub4i4/laser-burst_Gyjp5_Ed_NWM.mp3');
-        case 'asian': return new Audio('https://www.fesliyanstudios.com/play-mp3/389');
-        default: return new Audio('https://www.fesliyanstudios.com/play-mp3/387')
+        case 'synt': return new Audio(synt_sound);
+        case 'asian': return new Audio(asian_sound);
+        case 'default': return new Audio(default_sound);
+        default: return new Audio(menu_sound)
     }
 }
-
+ 
+export const setMusicForGame = (type?: string) => {
+    switch(type) {
+        case 'synt': return new Audio(synt_music);
+        case 'asian': return new Audio(asian_music);
+        case 'default': return new Audio(default_music);
+        default: return new Audio(menu_music)
+    }
+}
+ 
 export const setSizeStyle = () => {
     let sizeStyle = ''
         if (options.size === 16) {

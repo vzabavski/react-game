@@ -3,22 +3,59 @@ import { Link } from 'react-router-dom'
 import { cleanLocalStorage, formatTime } from '../../utills/game'
 import { options } from '../../utills/options'
 import './index.css'
+import Select from '@material-ui/core/Select/Select';
+import { InputLabel, MenuItem, Tab, Tabs } from '@material-ui/core';
+import { a11yProps, TabPanel } from '../../utills/design'
 
 
 
-export const Settings: React.FC = (props): React.ReactElement => {
+
+export const Settings: React.FC = (): React.ReactElement => {
+   
+    const [volume, setVolume] = useState(options.music_volume)
+    const [sound, setSound] = useState(options.sound_volume)
+    const handleVolumeChange = (e:any) => {
+        setVolume(+e.target.value);
+        options.music_volume = +e.target.value
+    }
+    const handleSoundChange = (e:any) => {
+        setSound(+e.target.value);
+        options.sound_volume = +e.target.value
+    }
     
-   return (
-        <div>
-            <h3>Mute sounds</h3>
-            <h3>Mute music</h3>
-        </div>
-   )
+        return (
+            <div className='settings_wrapper'>
+                    <div>
+                        <label>Volume: 
+                            <input 
+                                id="typeinp" 
+                                type="range" 
+                                min="0" max="1" 
+                                value={volume} 
+                                onChange={handleVolumeChange}
+                                step="0.1"/>
+                        </label>
+                    </div>
+                    <div>
+                        <label>Sounds: 
+                        <input 
+                                id="typeinp" 
+                                type="range" 
+                                min="0" max="1" 
+                                value={sound} 
+                                onChange={handleSoundChange}
+                                step="0.1"/>
+                        </label>
+                    </div>
+            </div>
+                
+        )
+    
 }
 
 export const Win: React.FC = (props): React.ReactElement => {
     return (
-         <div>
+         <div className='win'>
              <h2>Congradulations!</h2>
              <h3>{`Your time: ${formatTime(options.time)}`}</h3>
              <h3>{`Steps: ${options.steps + 1}`}</h3>
@@ -46,20 +83,31 @@ export const Score: React.FC = (props): React.ReactElement => {
             })
         }
     }
+    const [tab, setTab] = useState(0)
+    const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+        setTab(newValue);
+    };
+
+    
+
     return (
         <>
-            <div>
-                <h3>9 cells field:</h3>
-                <ul>
-                    {createScoreList(nineCellsScore)}
-                </ul>
-            </div>
-            <div>
-                <h3>16 cells field:</h3>
-                <ul>
-                    {createScoreList(sixteenCellsScore)}
-                </ul>
-            </div>
+            <Tabs
+                value={tab}
+                onChange={handleChange}
+                indicatorColor="primary"
+                textColor="primary"
+                centered
+            >
+                <Tab label="9 cells field" {...a11yProps(0)} />
+                <Tab label="16 cells field" {...a11yProps(1)} />
+            </Tabs>
+            <TabPanel value={tab} index={0}>
+                {createScoreList(nineCellsScore)}
+            </TabPanel>
+            <TabPanel value={tab} index={1}>
+                {createScoreList(sixteenCellsScore)}
+            </TabPanel>
         </>
          
     )
@@ -95,28 +143,28 @@ export const Options: React.FC = (props): React.ReactElement => {
     }
 
     return (
-        <div>
+        <div className='options'>
             <div className='options_block'>
-                <h3>Style: </h3>
-                <select value={style} onChange={handleStyleChange}>
-                    <option value="default">Default</option>
-                    <option value="asian">Asian vibe</option>
-                    <option value="synt">Synt-wave</option>
-                </select>
+                <InputLabel id="style" className="select-label">Style: </InputLabel>
+                <Select labelId="style" id="select" value={style} onChange={handleStyleChange} >
+                    <MenuItem value="default">Default</MenuItem>
+                    <MenuItem value="asian">Asian vibe</MenuItem>
+                    <MenuItem value="synt">Synt-wave</MenuItem>
+                </Select>
             </div>
             <div className='options_block'>
-                <h3>Size: </h3>
-                <select value={size} onChange={handleSizeChange}>
-                    <option value={9}>3X3</option>
-                    <option value={16}>4X4</option>
-                </select>
+                <InputLabel id="size" className="select-label">Size: </InputLabel>
+                <Select labelId="size" id="select" value={size} onChange={handleSizeChange} >
+                    <MenuItem value={9}>3X3</MenuItem>
+                    <MenuItem value={16}>4X4</MenuItem>
+                </Select>
             </div>
             <div className='options_block'>
-                <h3>Hide stats: </h3>
-                <select value={vis} onChange={handleVisChange}>
-                    <option value=''>Show</option>
-                    <option value='invisible'>Hide</option>
-                </select>
+                <InputLabel id="vis" className="select-label">Hide stats: </InputLabel>
+                <Select labelId="vis" id="select" value={vis} onChange={handleVisChange} >
+                    <MenuItem value=''>Show</MenuItem>
+                    <MenuItem value='invisible'>Hide</MenuItem>
+                </Select>
             </div>
         </div>
     )

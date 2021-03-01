@@ -9,6 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
 code {
@@ -25,13 +26,23 @@ code {
 .wrapper.menu {
   height: 100vh;
   justify-content: center;
-  background: cornsilk;
+  background: rgb(250,209,209);
+  background: radial-gradient(circle, rgba(250,209,209,0.7876284302783614) 28%, rgba(243,126,125,1) 100%); 
 }
 .invisible {
   visibility: hidden;
 }
 .empty {
   display: none;
+}
+
+.default {
+  font-family: 'Staatliches', cursive;
+}
+
+.wrapper.default {
+  background: rgb(245,178,145);
+  background: radial-gradient(circle, rgba(245,178,145,1) 0%, rgba(255,57,57,1) 100%); 
 }
 
 .synt {
@@ -48,7 +59,7 @@ code {
 }
 
 .wrapper.asian {
-  background: url(./assets/VZqFssW.jpg);
+  background: url(./assets/asian.jpg);
   background-size: 100% 100%;
 }
 
@@ -102,3 +113,10 @@ code {
   grid-area: p;
 }
 
+
+@media(max-width: 500px) {
+  .wrapper {
+    height: 100vh;
+    justify-content: center;
+  }
+}

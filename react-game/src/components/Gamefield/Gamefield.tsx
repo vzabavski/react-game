@@ -1,23 +1,32 @@
 import React from 'react'
 import './index.css'
-import { checkForComposure, cleanLocalStorage, createArray, createCellsOrder, isAcceptableToSwap, setSounOnClick } from '../../utills/game';
+//@ts-ignore
+import arrow from '../../assets/left-arrow.svg'
+import { checkForComposure, cleanLocalStorage, createArray, createCellsOrder, isAcceptableToSwap, setMusicForGame, setSounOnClick } from '../../utills/game';
 import { Cell } from '../Cell/Cell'
 import { ModalWindow }  from '../ModalWindow/ModalWindow'
 import { options } from '../../utills/options';
 import { Win } from '../Modal Children/ModalChildre';
+import { Link } from 'react-router-dom';
 
 export class Gamefield extends React.Component<{addStep: ()=> void, sizeClass?: string}> {
     state = {
         cells: createCellsOrder(options.size),
-        visibility: 'empty'
+        visibility: 'empty',
+        sound: setSounOnClick(options.style),
+        music: setMusicForGame(options.style)
     }
-    sound = setSounOnClick(options.style);
+    
     correctOrderObject = createArray(options.size);
     componentDidMount() {
         window.addEventListener('keypress', this.keyboardMoves);
+        this.state.sound.volume = options.sound_volume 
+        this.state.music.volume = options.music_volume 
+        this.state.music.play()
     }
     componentWillUnmount() {
         window.removeEventListener('keypress', this.keyboardMoves);
+        this.state.music.pause()
     }
     keyboardMoves = (event:any) => {
         const keyCode = event.keyCode;
@@ -56,7 +65,7 @@ export class Gamefield extends React.Component<{addStep: ()=> void, sizeClass?: 
             0: position,
             [num]: buffer
         }
-        if(true/*isAcceptableToSwap(movedCellPosition, emptyCellPosition, options.size)*/) {
+        if(isAcceptableToSwap(movedCellPosition, emptyCellPosition, options.size)) {
              
             this.setState({
                 cells: newCellsPosotions
@@ -64,15 +73,17 @@ export class Gamefield extends React.Component<{addStep: ()=> void, sizeClass?: 
             this.props.addStep();
             
             localStorage.setItem('cells', JSON.stringify(newCellsPosotions))
-            //this.sound.play();
+            this.state.sound.play();
             if(checkForComposure(newCellsPosotions, this.correctOrderObject)) {
                 this.setState({
                     visibility: ''
                 })
                 options.win = true
-                
+                this.state.music.pause()
+                const newScore = options.score.concat({'Steps': options.steps + 1, 'Size': options.size, 'Time': options.time})
+                options.score = newScore
                 //@ts-ignore 
-                localStorage.setItem('score', JSON.stringify(options.score.concat({'Steps': options.steps + 1, 'Size': options.size, 'Time': options.time})))
+                localStorage.setItem('score', JSON.stringify(newScore))
                 cleanLocalStorage()
             }
         }
@@ -94,10 +105,14 @@ export class Gamefield extends React.Component<{addStep: ()=> void, sizeClass?: 
         
         return(
             <>
+                <div className='menu-arrow'>
+                    <Link to='/'><img src={arrow} alt='arrow' width='20px' height='20px'/></Link>
+                   
+                </div>
                 <div className={`gamefield-wrapper ${options.style} ${options.sizeClass}`} >
                 { creatCells() }
                 </div>
-                <ModalWindow visibility={this.state.visibility} children={<Win />} onClose={() => console.log('close')}/> 
+                <ModalWindow visibility={this.state.visibility} children={<Win />} type='win' /> 
             </>
             
         )

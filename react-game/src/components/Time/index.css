@@ -11,7 +11,7 @@
 .time.synt {
     font-size: 2rem;
     font-weight: 600;
-    color: #b9b9b9;
+    color: #f7f7f7;
 }
 
 .time.asian {
@@ -26,10 +26,25 @@
     border-radius: 5px;
     border: none;
     margin: 3px;
+    cursor: pointer;
 }
 
-@media(max-width: 500px) {
-    .time {
+
+.controls-btn.synt {
+    width: 200px;
+    height: 50px;
+}
+
+.controls-btn.asian {
+    background: rgb(224, 218, 198);
+}
+
+@media(max-width: 700px) {
+    .time.synt {
       font-size: 1.2rem;
+    }
+    .time.asian {
+        font-size: 1.5rem;
+        
     }
   }

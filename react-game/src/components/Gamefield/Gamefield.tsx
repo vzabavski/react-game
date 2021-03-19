@@ -28,7 +28,7 @@ export class Gamefield extends React.Component<{addStep: ()=> void, sizeClass?: 
         window.removeEventListener('keypress', this.keyboardMoves);
         this.state.music.pause()
     }
-    keyboardMoves = (event:any) => {
+    keyboardMoves = (event: KeyboardEvent) => {
         const keyCode = event.keyCode;
         const { cells } = this.state
         const emptyPosition = cells[0].charCodeAt(0)

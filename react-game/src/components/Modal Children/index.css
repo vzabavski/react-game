@@ -1,0 +1,40 @@
+.options_block {
+    display: flex;
+    margin: 5%;
+}
+
+.settings_wrapper {
+    margin-bottom: 50px;
+}
+#typeinp {
+    width: 150px;
+    height: 20px;
+    margin-top: 18px;
+}
+
+.options{
+    margin-top: 50px;
+}
+
+.win {
+    margin-top: 50px;
+}
+
+.select-label {
+    margin: 7px 4px 0;
+}
+
+
+@media(max-width: 700px) {
+    .win {
+      font-size: 12px;
+      margin-top: 90px;
+    }
+}
+
+@media(max-width: 450px) {
+    .win {
+      font-size: 8px;
+      margin-top: 80px;
+    }
+}

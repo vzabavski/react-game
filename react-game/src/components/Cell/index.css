@@ -1,0 +1,65 @@
+.cell.empty {
+    display: none;
+}
+.cell {
+    border-radius: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px ;
+    cursor: pointer;
+}
+
+.number {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40%;
+}
+
+.cell.default {
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: 1px rgb(22, 18, 18);
+    border-radius: 0;
+    background:rgb(253, 200, 200);
+}
+
+.number.default {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.cell.synt {
+    font-size: 1.2rem;
+    font-weight: 700;
+    box-shadow: rgba(0, 0, 0, 0.5) 5px 3px;
+    background:rgb(250, 249, 253);
+}
+
+.number.synt {
+    color: rgb(198, 0, 248);
+    border: 1px solid rgb(85, 7, 173);
+    background: rgb(231,196,233);
+    background: radial-gradient(circle, rgba(231,196,233,1) 16%, rgba(255,255,255,1) 100%);
+}
+
+.cell.asian {
+    font-size: 1.2rem;
+    font-weight: 700;
+    box-shadow: rgba(0, 0, 0, 0.5) 5px 3px;
+    background:rgb(224, 218, 210);
+}
+
+.number.asian {
+    border: 1px solid rgba(237, 223, 209, 1);
+    background: rgba(223, 209, 196, 0.8);
+}
+
+@media(max-width: 500px) {
+    .number.synt {
+        font-size: 1rem;
+    }
+  }

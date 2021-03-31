@@ -1,0 +1,61 @@
+.gamefield-wrapper {
+    width: 60vh;
+    height: 60vh;
+    display: grid;
+    grid-gap: 5px;
+}
+.gamefield-wrapper.asian {
+    background:rgba(105, 31, 15, 0.8);
+    border: 10px solid rgba(87, 38, 12, 1);;
+    border-radius: 15px;
+}
+
+.gamefield-wrapper.default { 
+    border: 2px solid rgb(177, 76, 63);;
+    border-radius: 2px;
+    grid-gap: 0px;
+}
+
+.menu-arrow {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.76);
+}
+.menu-arrow img {
+    padding: 20px;
+}
+
+.nine-cells {
+    grid-template-areas: 
+    "a b c"
+    "d e f"
+    "g h i";
+}
+.sixteen-cells {
+    grid-template-areas: 
+    "a b c d"
+    "e f g h"
+    "i j k l"
+    "m n o p";
+}
+
+@media(max-width: 500px) {
+    .gamefield-wrapper {
+      width: 70vw;
+      height: 70vw;
+    }
+    .menu-arrow {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        width: 40px;
+        height: 40px;
+    }
+    .menu-arrow img {
+        padding: 10px;
+    }
+  }

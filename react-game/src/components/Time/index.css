@@ -1,0 +1,50 @@
+.time {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5%;
+    font-size: 1.2rem;
+}
+
+.time.synt {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #f7f7f7;
+}
+
+.time.asian {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #2c0c0c;
+}
+
+.controls-btn {
+    width: 100px;
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+    margin: 3px;
+    cursor: pointer;
+}
+
+
+.controls-btn.synt {
+    width: 200px;
+    height: 50px;
+}
+
+.controls-btn.asian {
+    background: rgb(224, 218, 198);
+}
+
+@media(max-width: 700px) {
+    .time.synt {
+      font-size: 1.2rem;
+    }
+    .time.asian {
+        font-size: 1.5rem;
+        
+    }
+  }
